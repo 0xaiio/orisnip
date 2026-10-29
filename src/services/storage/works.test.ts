@@ -89,6 +89,17 @@ describe('work storage', () => {
     expect(loadWorks().works).toHaveLength(1);
   });
 
+  it('ignores explicitly-undefined fields instead of erasing defaults', () => {
+    // Regression: callers built `{ id: workId ?? undefined }`, which used to
+    // overwrite the generated id and make the work unsaveable.
+    const work = makeWork({ id: undefined, title: '新作品' });
+    expect(typeof work.id).toBe('string');
+    expect(work.id.length).toBeGreaterThan(3);
+    saveWork(work);
+    expect(loadWorks().works).toHaveLength(1);
+    expect(getWork(work.id)?.title).toBe('新作品');
+  });
+
   it('generates unique ids', () => {
     const ids = new Set(Array.from({ length: 50 }, () => makeWork().id));
     expect(ids.size).toBe(50);

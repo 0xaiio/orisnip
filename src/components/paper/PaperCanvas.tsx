@@ -391,6 +391,7 @@ export function PaperCanvas({
             y2={handles[1].y}
             className="cut-line"
             strokeWidth={strokeW * 1.8}
+            strokeDasharray={`${unit * 0.038} ${unit * 0.026}`}
             onPointerDown={beginDrag('move')}
             style={{ cursor: drag === 'move' ? 'grabbing' : 'grab' }}
           />

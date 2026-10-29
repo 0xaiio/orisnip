@@ -173,7 +173,7 @@ export function Studio() {
 
   const persist = () => {
     const work = makeWork({
-      id: workId ?? undefined,
+      ...(workId ? { id: workId } : {}),
       title: doc.title,
       presetId: doc.presetId,
       cuts: doc.cuts,

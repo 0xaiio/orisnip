@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildArtworkSvg } from './artwork';
 import { applyCut } from '@/geometry/cuts';
-import { buildPacket } from '@/geometry/folds';
 import { unfold } from '@/geometry/unfold';
 import { getLevel } from '@/game/levels';
 

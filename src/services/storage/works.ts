@@ -77,7 +77,7 @@ export function newWorkId(): string {
 
 export function makeWork(partial: Partial<Work> = {}): Work {
   const now = Date.now();
-  return {
+  const base: Work = {
     id: newWorkId(),
     title: '未命名作品',
     presetId: 'fold-xy',
@@ -86,6 +86,12 @@ export function makeWork(partial: Partial<Work> = {}): Work {
     bgColor: '#F8F3E9',
     createdAt: now,
     updatedAt: now,
-    ...partial,
   };
+  // `{ id: undefined }` must not erase the generated id: callers build this
+  // object conditionally, and an explicit undefined used to make the work
+  // unsaveable (the store drops entries without a string id).
+  for (const [key, value] of Object.entries(partial)) {
+    if (value !== undefined) (base as unknown as Record<string, unknown>)[key] = value;
+  }
+  return base;
 }
