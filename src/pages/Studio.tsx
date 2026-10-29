@@ -382,10 +382,10 @@ export function Studio() {
                 </span>
                 <input
                   type="range"
-                  min={-1.2}
-                  max={1.2}
+                  min={-1.6}
+                  max={1.6}
                   step={0.01}
-                  value={Math.max(-1.2, Math.min(1.2, offset))}
+                  value={Math.max(-1.6, Math.min(1.6, offset))}
                   onChange={(e) => updateCut(doc.active, setCutOffset(activeCut, Number(e.target.value), center), false)}
                   aria-label="当前切口位置"
                 />

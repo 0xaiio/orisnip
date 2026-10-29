@@ -54,12 +54,13 @@ const levelData: PuzzleLevel[] = [
     brief: '一张没有折叠的方纸。用一条直线剪掉右上角，让纸变成一个缺了角的方形。',
     difficulty: 1,
     presetId: 'none',
-    solution: { a: { x: 1, y: 0.35 }, b: { x: 0.35, y: 1 }, keepSide: 1 },
-    start: { a: { x: 1, y: 0.85 }, b: { x: 0.85, y: 1 }, keepSide: 1 },
+    // SVG 的 y 轴向下，为了和「右上角」这句文案一致，切线放在 y < 0 的角上。
+    solution: { a: { x: 1, y: -0.35 }, b: { x: 0.35, y: -1 }, keepSide: -1 },
+    start: { a: { x: 1, y: -0.8 }, b: { x: 0.8, y: -1 }, keepSide: -1 },
     hints: [
       '整条虚线可以拖动，两个端点可以分别拖动来改变角度。',
       '把剪切线移动到能让右上角整块离开的位置。',
-      '参考：切线大约从右边 x = 1 处 y ≈ 0.35 的位置，连到上边 y = 1 处 x ≈ 0.35。',
+      '参考：切线大约从右边 x = 1、y ≈ −0.35 的位置，连到上边 y = −1、x ≈ 0.35 的位置。',
     ],
     knowledge: {
       title: '一刀就是一个半平面',
