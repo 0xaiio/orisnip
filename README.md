@@ -104,6 +104,7 @@ tools/
 ```
 
 详细设计见 [ARCHITECTURE.md](./ARCHITECTURE.md)，数学定义见 [docs/geometry.md](./docs/geometry.md)。
+发布流程与「为什么当前会话没有发布入口」见 [PUBLISHING.md](./PUBLISHING.md)。
 
 ---
 
